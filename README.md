@@ -4,13 +4,29 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Для запись видео использован пакет - [render](https://pub.dev/packages/render).
 
-A few resources to get you started if this is your first Flutter project:
+В папке home_screen установлен пакет запись видео, чтобы мог записывать вес процесс приложение. А
+все
+экраны связаны с экраном home_screen.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Использование:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    final RenderController renderController = RenderController(logLevel: LogLevel.debug);
+
+    MotionRecorder<MotionFormat>? stream;
+
+    RenderResult? result;
+
+    @override
+    Widget build(BuildContext context) {
+        return Render(
+            controller: renderController,
+            child:...
+            );
+
+
+Через renderController.recordMotion() начинает запись видео. А он возвращает класс MotionRecorder. "
+stream = renderController.recordMotion();"
+
+И при остановке запись возвращает класс RenderResult. И там находится все данные файлы. "result = await stream?.stop();""
